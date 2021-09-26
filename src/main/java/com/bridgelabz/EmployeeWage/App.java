@@ -9,7 +9,7 @@ public class App {
 	int working_hours;
 	int emp_rate_per_hours;
 	String company_name;
-	
+
 	public int getMonth_days() {
 		return month_days;
 	}
@@ -85,24 +85,35 @@ public class App {
 		System.out.print("enter employee rate for per hour : ");
 		int temWage = sc.nextInt();
 		setEmp_rate_per_hours(temWage);
-		
+
 		System.out.println("---------- for " + company_name + "  ----------");
-		
-		int empWage =  checkEmpWage(temHours, temDays, temWage);
-		System.out.println("Employee wage : " + empWage);
-		System.out.println("");
+
+		int empWage = checkEmpWage(temHours, temDays, temWage);
+		System.out.println("Employee wage of " + temName + " : " + empWage);
 	}
 
 	public static void main(String[] args) {
 		System.out.println("Hello welcome to employee wage computation program on master branch.");
 
-		App company1 = new App();
-		App company2 = new App();
-		App company3 = new App();
+		boolean exit = true;
+		while (exit) {
+			System.out.println("\nEnter 1 to Add Company\nEnter 0 to Exit");
+			Scanner sc = new Scanner(System.in);
+			int choice = sc.nextInt();
 
-		company1.setData();
-		company2.setData();
-		company3.setData();
-
+			switch (choice) {
+			case 1:
+				App company = new App();
+				company.setData();
+				break;
+			case 0:
+				System.out.println("Exit");
+				exit = false;
+				break;
+			default:
+				System.out.println("Invalid Option");
+				break;
+			}
+		}
 	}
 }
